@@ -24,7 +24,7 @@ class Shop:
                 if product.name in self.get_products():
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
-                    file.write(f'{product.name}, {product.price}\n')
+                    file.write(f'{product.name}, {product.weight}\n')
 
 
 s1 = Shop()
