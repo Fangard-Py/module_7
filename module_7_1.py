@@ -9,7 +9,6 @@ class Product:
 
 
 class Shop:
-
     def __init__(self):
         self.__file_name = 'products.txt'
 
@@ -19,12 +18,14 @@ class Shop:
         return products
 
     def add(self, *products):
+        products_in_file = set(self.get_products().splitlines())
         with open(self.__file_name, 'a') as file:
             for product in products:
-                if product.name in self.get_products():
-                    print(f'Продукт {product.name} уже есть в магазине')
+                product_str = f'{product.name}, {product.weight}, {product.category}'
+                if product_str not in products_in_file:
+                    file.write(f'{product_str}\n')
                 else:
-                    file.write(f'{product.name}, {product.weight}\n')
+                    print(f'Продукт {product.name} уже есть в магазине')
 
 
 s1 = Shop()
